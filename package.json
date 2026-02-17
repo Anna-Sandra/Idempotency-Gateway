@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/Anna-Sandra/Idempotency-Gateway/issues"
   },
-  "homepage": "https://github.com/Anna-Sandra/Idempotency-Gateway#readme"
+  "homepage": "https://github.com/Anna-Sandra/Idempotency-Gateway#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "crypto-js": "^4.2.0",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
 }
