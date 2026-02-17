@@ -17,7 +17,8 @@ flowchart TD
     B -->|Yes| H{Body hash matches?}
     H -->|Yes| I[Return stored response with X-Cache-Hit: true]
     H -->|No| J[Return 409 Conflict Error]
-
+ 
+ ---
 
 2. Setup Instructions
 
@@ -33,6 +34,7 @@ npm run dev
 
 # The server will run on http://localhost:3000
 
+---
 
 3.API Documentation
 
@@ -58,6 +60,8 @@ Status,Description,Body Example / Header
 400,Invalid Body,{ "error": "Invalid body" }
 409,Same key but different request body,{"error": "Idempotency key already used for a different request body."}
 
+---
+
 
 4 Design Decisions
 # Map store
@@ -75,6 +79,7 @@ Returns cached response instantly for repeated requests with the same key.
 # Error handling
 Returns 409 if the same key is used with a different request.
 
+---
 
 5.Developer's Choice Feature
 
