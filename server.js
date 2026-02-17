@@ -2,6 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const CryptoJS = require('crypto-js');
 
+require('dotenv').config();
+const PORT = process.env.PORT;
+
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -31,7 +35,7 @@ app.post('/process-payment', async (req, res) => {
 
   const existing = store.get(key);
 
-  
+
 if (existing.status === 'processing') {
   while (store.get(key).status === 'processing') {
     await new Promise(resolve => setTimeout(resolve, 100));
@@ -57,7 +61,7 @@ if (existing.status === 'done') {
 
 });
 
-const PORT = 3009;
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
