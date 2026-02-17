@@ -2,6 +2,8 @@
 
 This is a RESTful API that implements an idempotency layer for payment processing, ensuring requests are processed exactly once.
 
+---
+
 ## Architecture Diagram
 
 ```mermaid
