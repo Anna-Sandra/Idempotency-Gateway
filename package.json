@@ -2,7 +2,7 @@
   "name": "idempotency-gateway",
   "version": "1.0.0",
   "description": "This challenge is designed to test your ability to bridge Computer Science fundamentals with Modern Backend Engineering.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
