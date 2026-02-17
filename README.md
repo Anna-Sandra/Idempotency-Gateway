@@ -1,24 +1,23 @@
-1. Architecture Diagram
+# Idempotency-Gateway
 
-This is a RESTful API that implements an idempotency layer for payment processing, ensuring requests are processed exactly once.
+This is a lightweight RESTful API that implements an idempotency layer for payment processing. It ensures that identical requests (identified by an `Idempotency-Key` header) are processed **exactly once**, preventing double-charging even when network retries occur.
 
----
-
-## Architecture Diagram
+## 1. Architecture Diagram
 
 ```mermaid
 flowchart TD
-    A[Client sends POST /process-payment with Idempotency-Key & Body] --> B{Key exists in store?}
+    A[Client sends POST /process-payment<br>with Idempotency-Key & Body] --> B{Key exists in store?}
     B -->|No| C[Check if in-flight?]
-    C -->|No| D[Start processing: Simulate 2s delay, generate response]
+    C -->|No| D[Start processing:<br>Simulate 2s delay, generate response]
     D --> E[Store key, body hash, response]
     E --> F[Return 201 with response]
     C -->|Yes| G[Wait for original to finish, return its response]
     B -->|Yes| H{Body hash matches?}
     H -->|Yes| I[Return stored response with X-Cache-Hit: true]
     H -->|No| J[Return 409 Conflict Error]
- 
- ---
+
+
+---
 
 2. Setup Instructions
 
