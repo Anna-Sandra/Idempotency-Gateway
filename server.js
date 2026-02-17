@@ -35,6 +35,10 @@ app.post('/process-payment', async (req, res) => {
 
   const existing = store.get(key);
 
+  app.get('/', (req, res) => {
+    res.send('✅ Idempotency-Gateway API is running!');
+  });
+  
 
 if (existing.status === 'processing') {
   while (store.get(key).status === 'processing') {
